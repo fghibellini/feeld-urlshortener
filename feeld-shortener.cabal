@@ -1,0 +1,99 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 7261efb7cf5a405134c3f36ce7dca6e5f3a20f7922953602d501ff30015aecdb
+
+name:           feeld-shortener
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/fghibellini/feeld-shortener#readme>
+homepage:       https://github.com/fghibellini/feeld-shortener#readme
+bug-reports:    https://github.com/fghibellini/feeld-shortener/issues
+author:         Filippo Ghibellini
+maintainer:     f.ghibellini@gmail.com
+copyright:      aaaaa
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/fghibellini/feeld-shortener
+
+library
+  exposed-modules:
+      Feeld.UrlShortener.API
+      Feeld.UrlShortener.API.ResolveUrl.DB
+      Feeld.UrlShortener.API.ResolveUrl.Handler
+      Feeld.UrlShortener.API.StoreUrl.DB
+      Feeld.UrlShortener.API.StoreUrl.Handler
+      Feeld.UrlShortener.API.StoreUrl.Types
+      Feeld.UrlShortener.Config
+      Feeld.UrlShortener.Handler
+      Feeld.UrlShortener.Lib
+      Feeld.UrlShortener.Logging
+      Feeld.UrlShortener.Newtypes
+      Feeld.UrlShortener.Server
+      Feeld.UrlShortener.ShortUrl
+  other-modules:
+      Paths_feeld_shortener
+  hs-source-dirs:
+      src
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , bytestring
+    , hasql
+    , hasql-pool
+    , hasql-transaction
+    , lens
+    , megaparsec
+    , modern-uri
+    , random
+    , servant
+    , servant-server
+    , text
+    , time
+    , wai
+    , warp
+  default-language: Haskell2010
+
+executable feeld-shortener-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_feeld_shortener
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , feeld-shortener
+    , servant
+  default-language: Haskell2010
+
+test-suite feeld-shortener-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_feeld_shortener
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , feeld-shortener
+    , hspec
+    , http-client
+    , http-types
+    , lens
+    , servant-client
+    , servant-server
+    , text
+    , warp
+  default-language: Haskell2010

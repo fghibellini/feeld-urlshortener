@@ -1,0 +1,74 @@
+name:                feeld-shortener
+version:             0.1.0.0
+github:              "fghibellini/feeld-shortener"
+license:             BSD3
+author:              "Filippo Ghibellini"
+maintainer:          "f.ghibellini@gmail.com"
+copyright:           "aaaaa"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            aaaaa
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/fghibellini/feeld-shortener#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+  dependencies:
+  - servant
+  - servant-server
+  - wai
+  - warp
+  - text
+  - aeson
+  - hasql
+  - hasql-pool
+  - hasql-transaction
+  - random
+  - lens
+  - modern-uri
+  - megaparsec
+  - time
+  - bytestring
+
+executables:
+  feeld-shortener-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - feeld-shortener
+    - servant
+
+tests:
+  feeld-shortener-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - feeld-shortener
+    - hspec
+    - warp
+    - servant-client
+    - servant-server
+    - http-types
+    - http-client
+    - text
+    - lens
+    - bytestring
